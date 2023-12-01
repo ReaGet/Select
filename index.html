@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./styles.avtoalfa.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+      padding: 50px;
+    }
+
+    [data-items] > div::-webkit-scrollbar-thumb {
+      background: #d7262e;
+      border-radius: 8px;
+    }
+
+    [data-items] > div::-webkit-scrollbar-track {
+      background: #d7d7d7;
+      border-radius: 8px;
+    }
+
+    [data-items] > div::-webkit-scrollbar {
+      width: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- <div class="select" data-select="" data-theme="avtoalfa">
+      <select hidden>
+        <option value="1">По популярности</option>
+        <option value="2">По алфавиту А-Я</option>
+        <option value="3">По алфавиту Я-А</option>
+        <option value="4" selected>Сначала дешевле</option>
+        <option value="5">Сначала дороже</option>
+        <option value="2">По алфавиту А-Я</option>
+        <option value="3">По алфавиту Я-А</option>
+        <option value="4" selected>Сначала дешевле</option>
+        <option value="5">Сначала дороже</option>
+        <option value="2">По алфавиту А-Я</option>
+        <option value="3">По алфавиту Я-А</option>
+        <option value="4" selected>Сначала дешевле</option>
+        <option value="5">Сначала дороже</option>
+        <option value="2">По алфавиту А-Я</option>
+        <option value="3">По алфавиту Я-А</option>
+        <option value="4" selected>Сначала дешевле</option>
+        <option value="5">Сначала дороже</option>
+      </select>
+      <div data-option="current">
+        Все производители
+        <svg width="15" height="9" viewBox="0 0 15 9" xmlns="http://www.w3.org/2000/svg" data-icon>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7672 1.42833C15.0776 1.1116 15.0776 0.575594 14.7672 0.258865C14.4567 -0.0700459 13.9737 -0.057864 13.6633 0.258865L7.38501 6.72745L1.33672 0.246683C1.03775 -0.0822278 0.543312 -0.0822278 0.232848 0.246683C-0.0776159 0.575594 -0.0776159 1.09942 0.232848 1.41615L6.83308 8.49382C7.14354 8.82274 7.63798 8.81055 7.94845 8.49382L14.7672 1.42833Z"/>
+        </svg>
+      </div>
+      <div data-items>
+        <div class="scrollbar">
+          <div data-value="1" data-option="selected">Все производители</div>
+          <div data-value="2" data-option>BOVIA</div>
+          <div data-value="3" data-option>CAMIDA</div>
+          <div data-value="4" data-option>CAMOZZI S.p.A</div>
+          <div data-value="5" data-option>GILBER</div>
+          <div data-value="1" data-option>Все производители</div>
+          <div data-value="2" data-option>BOVIA</div>
+          <div data-value="3" data-option>CAMIDA</div>
+          <div data-value="4" data-option>CAMOZZI S.p.A</div>
+          <div data-value="5" data-option>GILBER</div>
+          <div data-value="1" data-option>Все производители</div>
+          <div data-value="2" data-option>BOVIA</div>
+          <div data-value="3" data-option>CAMIDA</div>
+          <div data-value="4" data-option>CAMOZZI S.p.A</div>
+          <div data-value="5" data-option>GILBER</div>
+          <div data-value="1" data-option>Все производители</div>
+          <div data-value="2" data-option>BOVIA</div>
+          <div data-value="3" data-option>CAMIDA</div>
+          <div data-value="4" data-option>CAMOZZI S.p.A</div>
+          <div data-value="5" data-option>GILBER</div>
+        </div>
+      </div>
+    </div> -->
+    <div class="select" data-select="vendors">
+      <select hidden>
+        <option value="1">По популярности</option>
+        <option value="4" selected>Сначала дешевле</option>
+        <option value="5">Сначала дороже</option>
+        <option value="23">Опция сякая</option>
+        <option value="54">Опция такая</option>
+        <option value="2" disabled>По алфавиту А-Я</option>
+      </select>
+      <div data-option="current">
+        <span>Все производители</span>
+        <svg width="15" height="9" viewBox="0 0 15 9" xmlns="http://www.w3.org/2000/svg" data-icon>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7672 1.42833C15.0776 1.1116 15.0776 0.575594 14.7672 0.258865C14.4567 -0.0700459 13.9737 -0.057864 13.6633 0.258865L7.38501 6.72745L1.33672 0.246683C1.03775 -0.0822278 0.543312 -0.0822278 0.232848 0.246683C-0.0776159 0.575594 -0.0776159 1.09942 0.232848 1.41615L6.83308 8.49382C7.14354 8.82274 7.63798 8.81055 7.94845 8.49382L14.7672 1.42833Z"/>
+        </svg>
+      </div>
+    </div>
+
+    <div data-select="second">
+      <select hidden>
+        <option value="2">Hello</option>
+        <option value="2">qwe</option>
+        <option value="3">Helsadasdfasd</option>
+        <option value="4">23213134</option>
+        <option value="5">xcvbxcbvxcbv</option>
+        <option value="6">werwqe</option>
+        <option value="7">Hello</option>
+        <option value="8">qwe</option>
+        <option value="9">Helsadasdfasd</option>
+        <option value="10">23213134</option>
+        <option value="11">xcvbxcbvxcbv</option>
+        <option value="612">werwqe</option>
+        <option value="213">Hello</option>
+        <option value="24">qwe</option>
+        <option value="35">Helsadasdfasd</option>
+        <option value="46">23213134</option>
+        <option value="57">xcvbxcbvxcbv</option>
+        <option value="68">werwqe</option>
+      </select>
+    </div>
+  </div>
+
+  <script src="./index.js" type="module"></script>
+</body>
+</html>
