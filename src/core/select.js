@@ -20,6 +20,12 @@ export default class Select extends Emitter {
       if (this.disabled) {
         return;
       }
+
+      const oldOption = this.options.get(String(oldValue));
+      if (oldOption) {
+        oldOption.selected = false;
+      }
+
       const selectedOption = this.options.get(String(newValue));
       if (selectedOption) {
         this.$el.querySelector("[data-option='current'] span").innerText = selectedOption.text;
@@ -49,6 +55,7 @@ export default class Select extends Emitter {
 
       const clickedOption = event.target.closest("[data-option]");
       if (
+        !clickedOption ||
         clickedOption.dataset.option === "disabled" ||
         this.$el.getAttribute("disabled") !== null
       ) {
@@ -78,6 +85,9 @@ export default class Select extends Emitter {
         ...defaultOption,
         ...opt,
       }
+
+      console.log(_option)
+
       _option.$el = objToHtmlEl(_option);
       
       this.$el.querySelector("[data-items] > div").appendChild(_option.$el);
