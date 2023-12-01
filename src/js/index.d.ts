@@ -3,6 +3,9 @@ export declare function Select(opts?: TSelectOptions): TSelect | TSelect[];
 export declare type TSelectOptions = {
   name?: string,
   disabled?: boolean,
+  template: {
+    arrow: string
+  }
 }
 
 export declare interface TSelect {

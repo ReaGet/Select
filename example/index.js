@@ -13,6 +13,9 @@ import Select from "../index.js";
 
 const select = new Select({
   name: "vendors",
+  template: {
+    arrow: "<span data-icon><</span>"
+  }
 });
 
 const select2 = new Select({

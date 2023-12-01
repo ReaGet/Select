@@ -1,5 +1,5 @@
 import { Emitter } from "./emitter.js";
-import { defineProp, defaultOption, objToHtmlEl, initMarkup, htmlToObj } from "./utils/utils.js";
+import { defineProp, defaultOption, objToHtmlEl, initMarkup, htmlToObj, defaultSelectOptions } from "./utils/utils.js";
 
 export default class Select extends Emitter {
   $el;
@@ -11,6 +11,11 @@ export default class Select extends Emitter {
     super();
     if (opts.name) {
       this.name = opts.name;
+    }
+
+    opts = {
+      ...defaultSelectOptions,
+      ...opts,
     }
 
     this.options = new Map();
@@ -30,6 +35,9 @@ export default class Select extends Emitter {
       const selectedOption = this.options.get(String(newValue));
       if (selectedOption) {
         this.$el.querySelector("[data-option='current'] span").innerText = selectedOption.text;
+        selectedOption.$el.setAttribute("data-option", "selected");
+        selectedOption.selected = true;
+        this.emit("change", selectedOption);
       } else {
         this.value = oldValue;
       }
@@ -43,7 +51,7 @@ export default class Select extends Emitter {
       }
     });
 
-    initMarkup(this);
+    initMarkup(this, opts);
 
     const selectEl = this.$el.querySelector("select");
     this.add(htmlToObj(selectEl.children));
