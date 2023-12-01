@@ -1,21 +1,25 @@
 export declare function Select(opts?: TSelectOptions): TSelect | TSelect[];
 
-
-type TSelectOptions = {
+export declare type TSelectOptions = {
   name?: string,
+  disabled?: boolean,
 }
 
-export type TSelect = {
-  $el: HTMLSelectElement,
-  value: string,
-  disabled: boolean,
+export declare interface TSelect {
+  $el: HTMLSelectElement;
+  value: string;
+  disabled: boolean;
+  options: TOption[];
 
   add: (option: TOptionParam | TOptionParam[]) => void;
   set: (option: TOptionParam | TOptionParam[]) => void;
   remove: (value: string) => void;
-  clear: () => void,
-  item: (index: number) => TOption,
-  itemByValue: (value: string) => TOption,
+  clear: () => void;
+  item: (index: number) => TOption;
+  itemByValue: (value: string) => TOption;
+
+  open: () => void;
+  close: () => void;
 
   on: (eventName: string, fn: () => void) => void;
   off: (eventName: string, fn: () => void) => void;

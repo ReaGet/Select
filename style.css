@@ -12,6 +12,16 @@
   border-radius: var(--rounded);
 }
 
+[data-select] select {
+  display: none;
+}
+
+[data-select][disabled] {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.7;
+}
+
 [data-option] {
   position: relative;
   display: flex;

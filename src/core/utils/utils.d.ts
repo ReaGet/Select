@@ -1,0 +1,1 @@
+declare function defineProp(context: object, prop: string, callback?: (newValue: unknown, oldValue: unknown) => void): void
