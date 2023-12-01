@@ -1,6 +1,6 @@
 import { default as SelectInstance } from "./core/select.js";
 
-export function Select(opts = {}) {
+export default function Select(opts = {}) {
   if (opts.name) {
     const $el = document.querySelector(`[data-select='${opts.name}']`);
     if (!$el) {

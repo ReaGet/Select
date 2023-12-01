@@ -24,11 +24,14 @@ export default class Select extends Emitter {
       const oldOption = this.options.get(String(oldValue));
       if (oldOption) {
         oldOption.selected = false;
+        oldOption.$el.setAttribute("data-option", "");
       }
 
       const selectedOption = this.options.get(String(newValue));
       if (selectedOption) {
         this.$el.querySelector("[data-option='current'] span").innerText = selectedOption.text;
+      } else {
+        this.value = oldValue;
       }
     });
 
@@ -81,12 +84,15 @@ export default class Select extends Emitter {
 
     option.forEach((opt) => {
       opt.value = String(opt.value);
+
+      if (this.options.has(opt.value)) {
+        return;
+      }
+
       const _option = {
         ...defaultOption,
         ...opt,
       }
-
-      console.log(_option)
 
       _option.$el = objToHtmlEl(_option);
       
