@@ -58,7 +58,6 @@ export default class Select extends Emitter {
     selectEl.remove();
 
     document.addEventListener("click", (event) => {
-      event.preventDefault();
       if (event.target.closest("[data-select]") !== this.$el) {
         this.close();
         return;
