@@ -2,8 +2,9 @@ export function defineProp(context, prop, callback = () => {}) {
   let _value;
   Object.defineProperty(context, prop, {
     set(newValue) {
-      callback(newValue, _value);
+      const oldValue = _value;
       _value = newValue;
+      callback(newValue, oldValue);
     },
     get() {
       return _value;
