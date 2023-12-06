@@ -1,5 +1,5 @@
 import { Emitter } from "./emitter.js";
-import { defineProp, defaultOption, objToHtmlEl, initMarkup, htmlToObj, defaultSelectOptions } from "./utils/utils.js";
+import { defineProp, defaultOption, objToHtmlEl, initMarkup, htmlToObj, defaultSelectOptions, handleOptionWrapperPadding } from "./utils/utils.js";
 
 export default class Select extends Emitter {
   $el;
@@ -110,12 +110,14 @@ export default class Select extends Emitter {
         this.value = _option.value;
       }
     });
+    handleOptionWrapperPadding(this);
   }
 
   remove(value) {
     value = String(value);
     this.$el.querySelector(`[data-option][data-value='${value}']`)?.remove();
     this.options.delete(value);
+    handleOptionWrapperPadding(this);
   }
 
   set(option) {
@@ -126,6 +128,7 @@ export default class Select extends Emitter {
   clear() {
     this.$el.querySelector("[data-items] > div").innerHTML = "";
     this.options.clear();
+    handleOptionWrapperPadding(this);
   }
 
   item(index) {
@@ -140,6 +143,7 @@ export default class Select extends Emitter {
 
   open() {
     this.$el.setAttribute("data-open", "");
+    handleOptionWrapperPadding(this);
     this.emit("open");
   }
 

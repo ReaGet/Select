@@ -72,6 +72,10 @@
   border-radius: var(--rounded);
 }
 
+[data-items].no-padding-right {
+  padding-right: 0;
+}
+
 [data-items] > div {
   display: flex;
   flex-direction: column;

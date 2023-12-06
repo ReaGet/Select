@@ -61,6 +61,18 @@ export function getDataOptionVal(option) {
   return option.selected ? 'selected' : (option.disabled ? 'disabled' : '');
 }
 
+export function handleOptionWrapperPadding(context) {
+  const itemsEl = context.$el.querySelector("[data-items]");
+  const innerHeight = itemsEl.querySelector("div").scrollHeight,
+    outerHeight = itemsEl.querySelector("div").offsetHeight;
+
+  if (innerHeight > outerHeight) {
+    itemsEl.classList.remove("no-padding-right");
+  } else {
+    itemsEl.classList.add("no-padding-right");
+  }
+}
+
 export const defaultOption = {
   selected: false,
   disabled: false,
