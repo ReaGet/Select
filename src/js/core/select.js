@@ -17,6 +17,8 @@ export default class Select extends Emitter {
       ...defaultSelectOptions,
       ...opts,
     }
+    
+    this.vars = opts.vars;
 
     this.options = new Map();
     this.$el = $el;
@@ -110,6 +112,7 @@ export default class Select extends Emitter {
         this.value = _option.value;
       }
     });
+    
     handleOptionWrapperPadding(this);
   }
 
