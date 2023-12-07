@@ -5,7 +5,8 @@ export declare type TSelectOptions = {
   disabled?: boolean,
   template: {
     arrow: string
-  }
+  },
+  vars: Record<string, any>,
 }
 
 export declare interface TSelect {
@@ -13,6 +14,8 @@ export declare interface TSelect {
   value: string;
   disabled: boolean;
   options: TOption[];
+  parent: TSelect[];
+  children: TSelect[];
 
   add: (option: TOptionParam | TOptionParam[]) => void;
   set: (option: TOptionParam | TOptionParam[]) => void;
@@ -27,6 +30,8 @@ export declare interface TSelect {
   on: (eventName: string, fn: () => void) => void;
   off: (eventName: string, fn: () => void) => void;
   emit: (eventName: string, ...args: any) => void;
+
+  dependsOn: (select: TSelect) => void;
 }
 
 type TOption = TOptionParam & {

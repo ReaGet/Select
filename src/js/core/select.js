@@ -6,6 +6,8 @@ export default class Select extends Emitter {
   value;
   disabled;
   options;
+  parent = [];
+  children = [];
 
   constructor($el, opts) {
     super();
@@ -17,14 +19,14 @@ export default class Select extends Emitter {
       ...defaultSelectOptions,
       ...opts,
     }
-    
+
     this.vars = opts.vars;
 
     this.options = new Map();
     this.$el = $el;
 
     defineProp(this, "value", (newValue, oldValue) => {
-      if (this.disabled) {
+      if (this.disabled || newValue === oldValue) {
         return;
       }
 

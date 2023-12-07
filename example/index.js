@@ -24,7 +24,7 @@ const select2 = new Select({
 
 
 select.on("change", (option) => {
-  console.log(select.value, option)
+  // console.log(select.value, option)
 });
 
 select2.on("change", (option) => {
