@@ -26,18 +26,18 @@ export default class Select extends Emitter {
     this.$el = $el;
 
     defineProp(this, "value", (newValue, oldValue) => {
-      console.log(newValue, oldValue)
+      // console.log(newValue, oldValue)
       let { value, type } = newValue;
       if (typeof newValue !== 'object') {
         value = newValue;
         type = "direct";
-      } 
+      }
 
-      if (this.disabled || value === oldValue) {
+      if (this.disabled || value === oldValue?.value) {
         return;
       }
 
-      const oldOption = this.options.get(String(oldValue));
+      const oldOption = this.options.get(String(oldValue?.value));
       if (oldOption) {
         oldOption.selected = false;
         oldOption.$el.setAttribute("data-option", "");
@@ -51,7 +51,7 @@ export default class Select extends Emitter {
         selectedOption.selected = true;
         this.emit("change", selectedOption, type);
       } else {
-        this.value = oldValue;
+        // this.value = oldValue;
       }
     });
 
