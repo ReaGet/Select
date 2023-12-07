@@ -29,6 +29,7 @@ export default class Select extends Emitter {
       let { value, type } = newValue;
       if (typeof newValue !== 'object') {
         value = newValue;
+        type = "direct";
       } 
 
       if (this.disabled || value === oldValue) {
