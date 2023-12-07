@@ -7,7 +7,7 @@ export function defineProp(context, prop, callback = () => {}) {
       callback(newValue, oldValue);
     },
     get() {
-      return _value;
+      return typeof _value === "object" ? _value.value : _value;
     }
   });
 }

@@ -26,6 +26,7 @@ export default class Select extends Emitter {
     this.$el = $el;
 
     defineProp(this, "value", (newValue, oldValue) => {
+      console.log(newValue, oldValue)
       let { value, type } = newValue;
       if (typeof newValue !== 'object') {
         value = newValue;
