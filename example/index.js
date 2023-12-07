@@ -23,8 +23,8 @@ const select2 = new Select({
 });
 
 
-select.on("change", (option) => {
-  // console.log(select.value, option)
+select.on("change", (option, actionType) => {
+  console.log(select.value, option, actionType)
 });
 
 select2.on("change", (option) => {

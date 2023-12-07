@@ -20,13 +20,18 @@ export default class Select extends Emitter {
       ...opts,
     }
 
-    this.vars = opts.vars;
+    this.vars = opts.vars
 
     this.options = new Map();
     this.$el = $el;
 
     defineProp(this, "value", (newValue, oldValue) => {
-      if (this.disabled || newValue === oldValue) {
+      let { value, type } = newValue;
+      if (typeof newValue !== 'object') {
+        value = newValue;
+      } 
+
+      if (this.disabled || value === oldValue) {
         return;
       }
 
@@ -36,12 +41,13 @@ export default class Select extends Emitter {
         oldOption.$el.setAttribute("data-option", "");
       }
 
-      const selectedOption = this.options.get(String(newValue));
+      const selectedOption = this.options.get(String(value));
+
       if (selectedOption) {
         this.$el.querySelector("[data-option='current'] span").innerText = selectedOption.text;
         selectedOption.$el.setAttribute("data-option", "selected");
         selectedOption.selected = true;
-        this.emit("change", selectedOption);
+        this.emit("change", selectedOption, type);
       } else {
         this.value = oldValue;
       }
@@ -82,7 +88,7 @@ export default class Select extends Emitter {
       }
 
       if (clickedOption.dataset.option !== null) {
-        this.value = clickedOption.dataset.value;
+        this.value = { value: clickedOption.dataset.value, type: "click" };
         this.close();
       }
     });
@@ -111,7 +117,7 @@ export default class Select extends Emitter {
       this.options.set(opt.value, _option);
 
       if (_option.selected) {
-        this.value = _option.value;
+        this.value = { value: _option.value, type: "add" };
       }
     });
     
