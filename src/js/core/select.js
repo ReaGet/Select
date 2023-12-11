@@ -85,7 +85,7 @@ export default class Select extends Emitter {
       }
 
       if (clickedOption.dataset.option === "current") {
-        this.$el.getAttribute("data-open") ? this.close() : this.open();
+        this.$el.getAttribute("data-open") !== null ? this.close() : this.open();
         return;
       }
 
@@ -114,7 +114,7 @@ export default class Select extends Emitter {
       }
 
       _option.$el = objToHtmlEl(_option);
-      
+
       this.$el.querySelector("[data-items] > div").appendChild(_option.$el);
       this.options.set(opt.value, _option);
 
@@ -122,7 +122,7 @@ export default class Select extends Emitter {
         this.value = { value: _option.value, type: "add" };
       }
     });
-    
+
     handleOptionWrapperPadding(this);
   }
 
